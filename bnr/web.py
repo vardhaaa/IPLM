@@ -14,7 +14,7 @@ st.set_page_config(
 def load_data():
 
     # Load data utama
-    df = pd.read_pickle('skripsialhamdulillahbnr.pkl')
+    df = pd.read_pickle('bnr/skripsialhamdulillahbnr.pkl')
 
     # ----------------- HANDLE CLUSTER -----------------
     if 'kategori_kluster' not in df.columns:
