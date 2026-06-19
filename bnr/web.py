@@ -4,7 +4,7 @@ import plotly.express as px
 
 # ----------------- KONFIG HALAMAN -----------------
 st.set_page_config(
-    page_title="Dashboard IPLM & TKM",
+    page_title="Dashboard IPLM & TGM",
     layout="wide",
     page_icon="🗺️"
 )
@@ -45,7 +45,7 @@ st.title("🗺️ Dashboard Sebaran Literasi Indonesia")
 
 st.markdown("""
 Visualisasi **Indeks Pembangunan Literasi Masyarakat (IPLM)** 
-dan **Tingkat Kegemaran Membaca (TKM)** berbasis clustering K-Means.
+dan **Tingkat Kegemaran Membaca (TGM)** berbasis clustering K-Means.
 """)
 
 # ----------------- METRIK -----------------
@@ -54,7 +54,7 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Total Wilayah", len(df))
 col2.metric("Rata-rata IPLM", f"{df['iplm'].mean():.2f}")
 col3.metric(
-    "Rata-rata TKM",
+    "Rata-rata TGM",
     f"{df['tingkat_kegemaran_membaca'].mean():.2f}"
 )
 
@@ -142,7 +142,7 @@ fig.update_traces(
     hovertemplate=
     "<b>%{hovertext}</b><br><br>" +
     "📚 IPLM: %{customdata[0]:.2f}<br>" +
-    "📖 TKM: %{customdata[1]:.2f}<br>" +
+    "📖 TGM: %{customdata[1]:.2f}<br>" +
     "🏷️ Cluster: %{customdata[2]}<extra></extra>"
 )
 
@@ -168,10 +168,10 @@ st.subheader("📋 Detail Data")
 st.dataframe(
     df[
         [
-            'kab_kota',
-            'iplm',
-            'tingkat_kegemaran_membaca',
-            'kategori_kluster'
+            'Kab_Kota',
+            'IPLM',
+            'TGM',
+            'Kategori_Kluster'
         ]
     ],
     use_container_width=True,
