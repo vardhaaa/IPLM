@@ -168,10 +168,10 @@ st.subheader("📋 Detail Data")
 st.dataframe(
     df[
         [
-            'Kab_Kota',
-            'IPLM',
-            'TGM',
-            'Kategori_Kluster'
+            'kab_kota',
+            'iplm',
+            'tingkat_kegemaran_membaca',
+            'kategori_kluster'
         ]
     ],
     use_container_width=True,
