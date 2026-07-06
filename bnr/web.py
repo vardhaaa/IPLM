@@ -91,15 +91,12 @@ df["bubble_size"] = (
 st.subheader("📍 Peta Sebaran Kluster Literasi")
 
 fig = px.scatter_mapbox(
-    df.dropna(subset=['latitude_x', 'longitude_x']),
+    df.dropna(subset=['latitude_x', 'longtitude_x']),
 
     lat="latitude_x",
-    lon="longitude_x",
+    lon="longtitude_x",
 
-    # warna berdasarkan kategori
     color="kategori_kluster",
-
-    # ukuran bubble
     size="bubble_size",
 
     hover_name="kab_kota",
@@ -109,22 +106,22 @@ fig = px.scatter_mapbox(
         "tingkat_kegemaran_membaca": ":.2f",
         "kategori_kluster": True,
 
-        # sembunyikan data teknis
         "latitude_x": False,
-        "longitude_x": False,
+        "longtitude_x": False,
         "bubble_size": False,
         "cluster_label": False
     },
 
-    # warna cluster
     color_discrete_map={
         "Tinggi": "green",
-        #"Sedang": "yellow",
         "Rendah": "red"
     },
 
     mapbox_style="open-street-map",
-
+    zoom=4,
+    center={"lat": -2.5, "lon": 118},
+    height=700
+)
     zoom=4,
     center={"lat": -2.5, "lon": 118},
 
