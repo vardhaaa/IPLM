@@ -14,15 +14,15 @@ st.set_page_config(
 def load_data():
 
     # Load data utama
-    df = pd.read_pickle('bnr/skripsialhamdulillahbnr.pkl')
+    df = pd.read_pickle('bnr/IPLM&TKM.pkl')
 
     # ----------------- HANDLE CLUSTER -----------------
     if 'kategori_kluster' not in df.columns:
         if 'cluster' in df.columns:
             df['kategori_kluster'] = df['cluster'].map({
-                1: 'Tinggi',
-                0: 'Sedang',
-                2: 'Rendah'
+                0: 'Tinggi',
+                #2: 'Sedang',
+                1: 'Rendah'
             })
 
     # Label cluster
@@ -119,7 +119,7 @@ fig = px.scatter_mapbox(
     # warna cluster
     color_discrete_map={
         "Tinggi": "green",
-        "Sedang": "yellow",
+        #"Sedang": "yellow",
         "Rendah": "red"
     },
 
