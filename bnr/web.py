@@ -14,15 +14,15 @@ st.set_page_config(
 def load_data():
 
     # Load data utama
-    df = pd.read_pickle('bnr/IPLM&TKM.pkl')
+    df = pd.read_pickle('bnr/IPLM&TKM1.pkl')
 
     # ----------------- HANDLE CLUSTER -----------------
     if 'kategori_kluster' not in df.columns:
         if 'cluster' in df.columns:
             df['kategori_kluster'] = df['cluster'].map({
-                0: 'Tinggi',
-                #2: 'Sedang',
-                1: 'Rendah'
+                1: 'Tinggi',
+                0: 'Sedang',
+                2: 'Rendah'
             })
 
     # Label cluster
@@ -91,10 +91,10 @@ df["bubble_size"] = (
 st.subheader("📍 Peta Sebaran Kluster Literasi")
 
 fig = px.scatter_mapbox(
-    df.dropna(subset=['latitude_x', 'longtitude_x']),
+    df.dropna(subset=['latitude', 'longtitude']),
 
-    lat="latitude_x",
-    lon="longtitude_x",
+    lat="latitude",
+    lon="longtitude",
 
     color="kategori_kluster",
     size="bubble_size",
@@ -105,14 +105,15 @@ fig = px.scatter_mapbox(
         "iplm": ":.2f",
         "tingkat_kegemaran_membaca": ":.2f",
         "kategori_kluster": True,
-        "latitude_x": False,
-        "longtitude_x": False,
+        "latitude": False,
+        "longtitude": False,
         "bubble_size": False,
         "cluster_label": False
     },
 
     color_discrete_map={
         "Tinggi": "green",
+        "Sedang": "yellow",
         "Rendah": "red"
     },
 
