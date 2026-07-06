@@ -91,12 +91,15 @@ df["bubble_size"] = (
 st.subheader("📍 Peta Sebaran Kluster Literasi")
 
 fig = px.scatter_mapbox(
-    df.dropna(subset=['latitude', 'longtitude']),
+    df.dropna(subset=['latitude', 'longitude']),
 
     lat="latitude",
-    lon="longtitude",
+    lon="longitude",
 
+    # warna berdasarkan kategori
     color="kategori_kluster",
+
+    # ukuran bubble
     size="bubble_size",
 
     hover_name="kab_kota",
@@ -105,12 +108,15 @@ fig = px.scatter_mapbox(
         "iplm": ":.2f",
         "tingkat_kegemaran_membaca": ":.2f",
         "kategori_kluster": True,
+
+        # sembunyikan data teknis
         "latitude": False,
-        "longtitude": False,
+        "longitude": False,
         "bubble_size": False,
         "cluster_label": False
     },
 
+    # warna cluster
     color_discrete_map={
         "Tinggi": "green",
         "Sedang": "yellow",
@@ -118,8 +124,10 @@ fig = px.scatter_mapbox(
     },
 
     mapbox_style="open-street-map",
+
     zoom=4,
     center={"lat": -2.5, "lon": 118},
+
     height=700
 )
 
@@ -128,13 +136,16 @@ fig.update_layout(
     legend_title="Kategori Kluster"
 )
 
+
+
 fig.update_traces(
     hovertemplate=
-    "<b>%{hovertext}</b><br><br>"
-    + "📚 IPLM: %{customdata[0]:.2f}<br>"
-    + "📖 TGM: %{customdata[1]:.2f}<br>"
-    + "🏷️ Cluster: %{customdata[2]}<extra></extra>"
+    "<b>%{hovertext}</b><br><br>" +
+    "📚 IPLM: %{customdata[0]:.2f}<br>" +
+    "📖 TKM: %{customdata[1]:.2f}<br>" +
+    "🏷️ Cluster: %{customdata[2]}<extra></extra>"
 )
+
 
 st.plotly_chart(fig, use_container_width=True)
 
