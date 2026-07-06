@@ -93,8 +93,8 @@ st.subheader("📍 Peta Sebaran Kluster Literasi")
 fig = px.scatter_mapbox(
     df.dropna(subset=['latitude', 'longitude']),
 
-    lat="latitude",
-    lon="longitude",
+    lat="latitude_x",
+    lon="longitude_x",
 
     # warna berdasarkan kategori
     color="kategori_kluster",
@@ -110,8 +110,8 @@ fig = px.scatter_mapbox(
         "kategori_kluster": True,
 
         # sembunyikan data teknis
-        "latitude": False,
-        "longitude": False,
+        "latitude_x": False,
+        "longitude_x": False,
         "bubble_size": False,
         "cluster_label": False
     },
