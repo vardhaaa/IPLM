@@ -105,7 +105,6 @@ fig = px.scatter_mapbox(
         "iplm": ":.2f",
         "tingkat_kegemaran_membaca": ":.2f",
         "kategori_kluster": True,
-
         "latitude_x": False,
         "longtitude_x": False,
         "bubble_size": False,
@@ -122,28 +121,21 @@ fig = px.scatter_mapbox(
     center={"lat": -2.5, "lon": 118},
     height=700
 )
-    zoom=4,
-    center={"lat": -2.5, "lon": 118},
-
-    height=700
-)
 
 fig.update_layout(
     margin=dict(r=0, t=0, l=0, b=0),
     legend_title="Kategori Kluster"
 )
 
-
-
 fig.update_traces(
     hovertemplate=
-    "<b>%{hovertext}</b><br><br>" +
-    "📚 IPLM: %{customdata[0]:.2f}<br>" +
-    "📖 TGM: %{customdata[1]:.2f}<br>" +
-    "🏷️ Cluster: %{customdata[2]}<extra></extra>"
+    "<b>%{hovertext}</b><br><br>"
+    + "📚 IPLM: %{customdata[0]:.2f}<br>"
+    + "📖 TGM: %{customdata[1]:.2f}<br>"
+    + "🏷️ Cluster: %{customdata[2]}<extra></extra>"
 )
 
-
+st.plotly_chart(fig, use_container_width=True)
 
 st.plotly_chart(fig, use_container_width=True)
 
