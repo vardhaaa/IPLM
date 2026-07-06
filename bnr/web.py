@@ -91,7 +91,7 @@ df["bubble_size"] = (
 st.subheader("📍 Peta Sebaran Kluster Literasi")
 
 fig = px.scatter_mapbox(
-    df.dropna(subset=['latitude', 'longitude']),
+    df.dropna(subset=['latitude_x', 'longitude_x']),
 
     lat="latitude_x",
     lon="longitude_x",
