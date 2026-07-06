@@ -73,7 +73,7 @@ if cluster_option != "Semua":
     df = df[df['kategori_kluster'] == cluster_option]
 
 # ----------------- CEK KOORDINAT -----------------
-missing = df['latitude'].isna().sum()
+missing = df['latitude_x'].isna().sum()
 
 if missing > 0:
     st.warning(
